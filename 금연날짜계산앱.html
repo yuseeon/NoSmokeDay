@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>금연날짜계산앱</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            font-family: '나눔고딕', '맑은 고딕', sans-serif;
+        }
+
+        .app {
+            border: 4px solid #333;
+            width: 80%;
+            aspect-ratio: 1 / 1 ;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-size: 8vw;
+        }
+
+        .day {
+            font-size: 3em;
+            color: red;
+        }
+
+        .info {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 경과일 = 오늘 - 금연시작한 날 -->
+    <div class="app">
+        <div class="container">
+            <h1>금연관리 앱</h1>
+            <p>금연일로부터 며칠이 지났는지 알려줍니다.</p>
+            <p class="info"><span id="day" class="day">0</span>일이 경과 됐습니다.</p>
+            <input type="date">
+        </div>    
+    </div>
+
+    <script>
+        let startDay = new Date('2022-05-01').getTime(); // 금연시작일
+        let today = new Date().getTime(); // 오늘
+
+        // 경과일 = 오늘 - 금연 시작한 날
+        // result = today -startDay
+        console.log(startDay, today);
+        result = today - startDay;
+        result = result / (1000*60*60*24); // 일수
+
+        // Math객체에서 소수점 제하기
+        intResult = Math.floor(result);
+
+        // 시간 표시
+        document.getElementById('day').innerHTML = intResult;
+        // $('#day').html(result);
+    </script>
+
+    <script>
+        /*** 기능 개선 
+         * 1. 사용자가 날짜입력 (금연시작일) 기능
+         * 2. 금연시작일이 영구적으로 저장(DB)
+         * 3. 디자인을 각색해보세요
+         * 4. 깃허브에 업데이트(html,css,js 코드분리)
+        */
+    </script>
+</body>
+</html>
